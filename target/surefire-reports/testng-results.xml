@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testng-results skipped="0" failed="0" ignored="0" total="1" passed="1">
+  <reporter-output>
+  </reporter-output>
+  <suite name="Surefire suite" duration-ms="6716" started-at="2020-05-25T13:01:04 KRAT" finished-at="2020-05-25T13:01:11 KRAT">
+    <groups>
+    </groups>
+    <test name="Surefire test" duration-ms="6716" started-at="2020-05-25T13:01:04 KRAT" finished-at="2020-05-25T13:01:11 KRAT">
+      <class name="firstTest">
+        <test-method status="PASS" signature="setupClass()[pri:0, instance:firstTest@788fcafb]" name="setupClass" is-config="true" duration-ms="1548" started-at="2020-05-25T13:01:04 KRAT" finished-at="2020-05-25T13:01:06 KRAT">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- setupClass -->
+        <test-method status="PASS" signature="testValidLoginAndPassword()[pri:0, instance:firstTest@788fcafb]" name="testValidLoginAndPassword" duration-ms="4963" started-at="2020-05-25T13:01:06 KRAT" description="Тест на корректную авторизацию" finished-at="2020-05-25T13:01:11 KRAT">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- testValidLoginAndPassword -->
+        <test-method status="PASS" signature="tearDown()[pri:0, instance:firstTest@788fcafb]" name="tearDown" is-config="true" duration-ms="68" started-at="2020-05-25T13:01:11 KRAT" finished-at="2020-05-25T13:01:11 KRAT">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- tearDown -->
+      </class> <!-- firstTest -->
+    </test> <!-- Surefire test -->
+  </suite> <!-- Surefire suite -->
+</testng-results>
