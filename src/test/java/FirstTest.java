@@ -1,71 +1,55 @@
 import io.github.bonigarcia.wdm.WebDriverManager;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
-import org.testng.annotations.*;
+import org.testng.annotations.AfterMethod;
+import org.testng.annotations.BeforeMethod;
+import org.testng.annotations.Test;
+import pages.BasePage;
 import pages.PageLogin;
 
-import static pages.PageLogin.*;
 import static helpers.TestData.*;
 
 public class FirstTest {
 
     public WebDriver driver;
-    public PageLogin page;
+    public BasePage newBasePage;
+    private PageLogin newPageLogin;
 
     @BeforeMethod
     private void setupClass() {
         WebDriverManager.chromedriver().setup();
         driver = new ChromeDriver();
-        page = new PageLogin(driver);
+        newPageLogin = new PageLogin(driver);
     }
 
     @Test(description = "Тест на корректную авторизацию", priority = 0)
     public void testValidLoginAndPassword() {
-
         openLoginPage(driver);
-
         maximizeBrowser(driver);
-
         enterLogin(userNameField, username);
-
         enterPassword(passField, password);
-
         clickLoginButton();
-
         waitingElement(driver);
-
         assertForValidLoginAndPassword(driver);
     }
 
     @Test(description = "Тест некорректного логина", priority = 1)
     public void testInvalidLogin() {
-
         openLoginPage(driver);
-
         maximizeBrowser(driver);
-
         enterLogin(userNameField, invalid);
-
         enterPassword(passField, password);
-
         clickLoginButton();
-
         assertAlertForInvalidLogin(driver);
     }
 
     @Test(description = "Тест некорректного пароля", priority = 1)
     public void testInvalidPassword() {
-
         openLoginPage(driver);
-
         maximizeBrowser(driver);
-
         enterLogin(userNameField, username);
-
         enterPassword(passField, invalid);
-
         clickLoginButton();
-
         assertAlertForInvalidPassword(driver);
     }
 
