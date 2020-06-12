@@ -5,7 +5,7 @@ import org.testng.ITestListener;
 import org.testng.ITestResult;
 import pages.BasePage;
 
-public class testAllureListener implements ITestListener {
+public class TestAllureListener implements ITestListener {
 
     public static String getTestMethodName(ITestResult iTestResult) {
         return iTestResult.getMethod().getConstructorOrMethod().getName();

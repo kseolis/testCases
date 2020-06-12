@@ -12,7 +12,7 @@ import org.testng.ITestResult;
 
 import java.util.concurrent.TimeUnit;
 
-import static helpers.testAllureListener.getTestMethodName;
+import static helpers.TestAllureListener.getTestMethodName;
 
 import static io.github.bonigarcia.wdm.DriverManagerType.CHROME;
 

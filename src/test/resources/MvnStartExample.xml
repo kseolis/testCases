@@ -1,0 +1,17 @@
+<?xml version="1.0"?>
+
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+
+<suite name="Mvn start example suite">
+
+    <listeners>
+        <listener class-name="helpers.TestAllureListener"/>
+    </listeners>
+
+    <test name="First example">
+        <classes>
+            <class name="FirstTest"/>
+        </classes>
+    </test>
+
+</suite>
