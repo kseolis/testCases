@@ -1,5 +1,6 @@
 package pages;
 
+import io.qameta.allure.Step;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -35,44 +36,47 @@ public class PageLogin {
     @FindBy(className = "subheader")
     public static WebElement subHeader;
 
+    @Step("Шаг открытия страницу авторизации")
     public static void openLoginPage(WebDriver driver) {
         driver.get(url);
     }
 
-    public static void maximizeBrowser(WebDriver driver) {
-        driver.manage().window().maximize();
-    }
-
+    @Step("Ввод логина")
     public static void enterLogin(WebElement element, String login) {
         element.sendKeys(login);
     }
 
+    @Step("Ввод пароля")
     public static void enterPassword(WebElement element, String password) {
         element.sendKeys(password);
     }
 
+    @Step("Нажатие ккнопки авторизации")
     public static void clickLoginButton() {
         loginButton.click();
     }
 
+    @Step("Ожидание текста после авторизации")
     public static void waitingElement(WebDriver driver) {
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
         wait.until(ExpectedConditions.textToBePresentInElement(subHeader, loginText));
     }
 
-    public static void assertForValidLoginAndPassword(WebDriver driver) {
+    @Step("Проверка успешной авторизации пользователя")
+    public static void userIsAuthorized(WebDriver driver) {
         Assert.assertEquals(expectedUrl, driver.getCurrentUrl());
         Assert.assertEquals(loginText, subHeader.getText());
     }
 
-    public static void assertAlertForInvalidLogin(WebDriver driver) {
+    @Step("Проверка отображения ошибки при некорректном логине")
+    public static void invalidLogin(WebDriver driver) {
         String textFlash = driver.findElement(By.id("flash")).getText();
         Assert.assertEquals(alertUserNameText, textFlash);
     }
 
-    public static void assertAlertForInvalidPassword(WebDriver driver) {
+    @Step("Проверка отображения ошибки при некорректном пароле")
+    public static void invalidPassword(WebDriver driver) {
         String textFlash = driver.findElement(By.id("flash")).getText();
         Assert.assertEquals(alertPasswordText, textFlash);
     }
-
 }

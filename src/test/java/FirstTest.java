@@ -23,32 +23,29 @@ public class FirstTest {
     @Test(description = "Тест на корректную авторизацию", priority = 0)
     public void testValidLoginAndPassword() {
         openLoginPage(driver);
-        maximizeBrowser(driver);
         enterLogin(userNameField, username);
         enterPassword(passField, password);
         clickLoginButton();
         waitingElement(driver);
-        assertForValidLoginAndPassword(driver);
+        userIsAuthorized(driver);
     }
 
     @Test(description = "Тест некорректного логина", priority = 1)
     public void testInvalidLogin() {
         openLoginPage(driver);
-        maximizeBrowser(driver);
         enterLogin(userNameField, invalid);
         enterPassword(passField, password);
         clickLoginButton();
-        assertAlertForInvalidLogin(driver);
+        invalidLogin(driver);
     }
 
     @Test(description = "Тест некорректного пароля", priority = 1)
     public void testInvalidPassword() {
         openLoginPage(driver);
-        maximizeBrowser(driver);
         enterLogin(userNameField, username);
         enterPassword(passField, invalid);
         clickLoginButton();
-        assertAlertForInvalidPassword(driver);
+        invalidPassword(driver);
     }
 
     @AfterMethod
