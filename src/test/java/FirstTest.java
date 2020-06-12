@@ -1,4 +1,5 @@
 import org.openqa.selenium.WebDriver;
+import org.testng.ITestResult;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
@@ -6,6 +7,7 @@ import pages.BasePage;
 import pages.PageLogin;
 
 import static helpers.TestData.*;
+import static pages.BasePage.makeScreenOnTestFail;
 import static pages.PageLogin.*;
 
 public class FirstTest {
@@ -49,7 +51,8 @@ public class FirstTest {
     }
 
     @AfterMethod
-    public void tearDown() {
+    public void tearDown(ITestResult result) {
+        makeScreenOnTestFail(result);
         if (driver != null) {
             driver.quit();
         }
