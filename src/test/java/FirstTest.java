@@ -1,6 +1,4 @@
-import io.github.bonigarcia.wdm.WebDriverManager;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.chrome.ChromeDriver;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
@@ -8,18 +6,18 @@ import pages.BasePage;
 import pages.PageLogin;
 
 import static helpers.TestData.*;
+import static pages.PageLogin.*;
 
 public class FirstTest {
 
     public WebDriver driver;
-    public BasePage newBasePage;
-    private PageLogin newPageLogin;
+    public BasePage basePage;
 
     @BeforeMethod
     private void setupClass() {
-        WebDriverManager.chromedriver().setup();
-        driver = new ChromeDriver();
-        newPageLogin = new PageLogin(driver);
+        basePage = new BasePage();
+        driver = basePage.initializeDriver();
+        PageLogin page = new PageLogin(driver);
     }
 
     @Test(description = "Тест на корректную авторизацию", priority = 0)
