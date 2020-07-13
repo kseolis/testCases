@@ -26,13 +26,13 @@ public class TestData {
     public static final String emailData = random + "glad" + random + "@mail.ru";
     public static final String phoneData = "79235500" + random;
     public static final String acceptPhoneData = "123456";
-    public static final String passportData = "8" + random + 323 + random;
+    public static final int passportData = 1848455111;
     public static final String passportDateData = "11112014";
     public static final String birthdayData = "11111998";
     public static final String subdivisionData = "11112014";
     public static final String issuerData = "УФМС ПО ГОРОДУ ГОРОДОВ";
     public static final String birthplaceData = "Кемерово";
-    public static final String registeredAddress = "г Кемерово, ул Терешковой, д 25, кв 24";
+    public static final String registeredAddressData = "г Кемерово, ул Терешковой, д 25, кв 24";
     public static final String ownerName = "Виталий Витальевич";
 
 

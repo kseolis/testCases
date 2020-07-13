@@ -11,6 +11,7 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 import java.time.Duration;
 
 import static helpers.TestData.*;
+import static pages.BasePage.enterData;
 
 public class AddressesPage {
     public WebDriver driver;
@@ -36,8 +37,15 @@ public class AddressesPage {
     public static WebElement ownerName;
 
     @Step("Ожидание заголовка страницы адреса")
-    public static void waitPassportPageHeading(WebDriver driver) {
+    public static void waitAddressPageHeading(WebDriver driver) {
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
         wait.until(ExpectedConditions.textToBePresentInElement(addressesHeadingText, AddressesPageHeadingText));
+    }
+
+    @Step("Заполнение адреса и доп.контактов")
+    public static void inputAddressesAndAdditionalContact() {
+        enterData(registeredAddress, registeredAddressData);
+        enterData(additionalPhone, passportDateData);
+        enterData(ownerName, birthdayData);
     }
 }

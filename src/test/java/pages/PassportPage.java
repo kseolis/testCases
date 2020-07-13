@@ -5,10 +5,6 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
-import org.openqa.selenium.support.ui.ExpectedConditions;
-import org.openqa.selenium.support.ui.WebDriverWait;
-
-import java.time.Duration;
 
 import static helpers.TestData.*;
 import static pages.BasePage.enterData;
@@ -39,14 +35,8 @@ public class PassportPage {
     @FindBy(id = "birthplace")
     public static WebElement birthplace;
 
-    @FindBy(xpath = "//div/h1[2]")
-    public static WebElement passportHeadingText;
-
-    @Step("Ожидание заголовка страницы паспортных данных")
-    public static void waitPassportPageHeading(WebDriver driver) {
-        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
-        wait.until(ExpectedConditions.textToBePresentInElement(passportHeadingText, PassportPageHeadingText));
-    }
+    @FindBy(xpath = "//div[2]/div/button")
+    public static WebElement proceedButtonPassportPage;
 
     @Step("Ввод паспортных данных клиента")
     public static void inputClientPassportData() {

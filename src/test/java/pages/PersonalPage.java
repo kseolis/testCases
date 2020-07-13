@@ -55,6 +55,12 @@ public class PersonalPage {
     @FindBy(xpath = "//form/div[3]/div/button")
     public static WebElement acceptPhoneButton;
 
+    @FindBy(xpath = "//div[2]/div/button")
+    public static WebElement proceedButtonPersonalPage;
+
+    @FindBy(xpath = "//div/h1[2]")
+    public static WebElement passportHeadingText;
+
     @Step("Шаг открытия страницы авторизации")
     public static void openMainPage(WebDriver driver) {
         driver.get(roboUrl);
@@ -79,5 +85,11 @@ public class PersonalPage {
     public static void waitPhoneVerification(WebDriver driver) {
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
         wait.until(ExpectedConditions.textToBePresentInElement(phoneVerification, PhoneVerificationText));
+    }
+
+    @Step("Ожидание заголовка страницы паспортных данных")
+    public static void waitPassportPageHeading(WebDriver driver) {
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+        wait.until(ExpectedConditions.textToBePresentInElement(passportHeadingText, PassportPageHeadingText));
     }
 }
