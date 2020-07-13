@@ -51,11 +51,6 @@ public class PageLogin {
         element.sendKeys(password);
     }
 
-    @Step("Нажатие ккнопки авторизации")
-    public static void clickLoginButton() {
-        loginButton.click();
-    }
-
     @Step("Ожидание текста после авторизации")
     public static void waitingElement(WebDriver driver) {
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));

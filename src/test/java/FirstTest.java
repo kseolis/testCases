@@ -7,6 +7,7 @@ import pages.BasePage;
 import pages.PageLogin;
 
 import static helpers.TestData.*;
+import static pages.BasePage.clickButton;
 import static pages.BasePage.makeScreenOnTestFail;
 import static pages.PageLogin.*;
 
@@ -27,7 +28,7 @@ public class FirstTest {
         openLoginPage(driver);
         enterLogin(userNameField, username);
         enterPassword(passField, password);
-        clickLoginButton();
+        clickButton(driver, loginButton);
         waitingElement(driver);
         userIsAuthorized(driver);
     }
@@ -37,7 +38,7 @@ public class FirstTest {
         openLoginPage(driver);
         enterLogin(userNameField, invalid);
         enterPassword(passField, password);
-        clickLoginButton();
+        clickButton(driver, loginButton);
         invalidLogin(driver);
     }
 
@@ -46,7 +47,7 @@ public class FirstTest {
         openLoginPage(driver);
         enterLogin(userNameField, username);
         enterPassword(passField, invalid);
-        clickLoginButton();
+        clickButton(driver, loginButton);
         invalidPassword(driver);
     }
 

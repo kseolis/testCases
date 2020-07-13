@@ -3,9 +3,7 @@ package pages;
 import io.github.bonigarcia.wdm.WebDriverManager;
 import io.qameta.allure.Attachment;
 import io.qameta.allure.Step;
-import org.openqa.selenium.OutputType;
-import org.openqa.selenium.TakesScreenshot;
-import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.*;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
 import org.testng.ITestResult;
@@ -36,6 +34,12 @@ public class BasePage {
         driver.manage().window().maximize();
         tDriver.set(driver);
         return getDriver();
+    }
+
+    @Step("Нажатие кнопки, JS")
+    public static void clickButton(WebDriver driver, WebElement element) {
+        JavascriptExecutor executor = (JavascriptExecutor) driver;
+        executor.executeScript("arguments[0].click();", element);
     }
 
     @Step("Закрытие драйвера + скриншот если тест зафейлен")
