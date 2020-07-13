@@ -5,7 +5,8 @@ import pages.BasePage;
 import pages.PersonalPage;
 
 import static helpers.TestData.*;
-import static pages.BasePage.clickButton;
+import static pages.BasePage.*;
+import static pages.PassportPage.*;
 import static pages.PersonalPage.*;
 
 public class doublePagesTest {
@@ -21,22 +22,24 @@ public class doublePagesTest {
 
     @Test(description = "Тест СНИЛС идентификации", priority = 1)
     public void testSnils() {
+        // Первый шаг регистрации. Данные клиента(ФИО, email, телефон);
         openMainPage(driver);
         clickButton(driver, getLoan);
         waitElementLoanApplication(driver);
-
-        enterData(lastName, lastNameData);
-        enterData(firstName, firstNameData);
-        enterData(middleName, middleNameData);
-        enterData(phone, phoneData);
-        enterData(email, emailData);
-
+        inputClientData();
         clickButton(driver, acceptAgreement);
-        clickButton(driver, proceed);
+        clickButton(driver, proceedButton);
+        // Подтверждение номера телефона;
         waitPhoneVerification(driver);
-        enterData(code, acceptPhone);
+        enterData(code, acceptPhoneData);
         clickButton(driver, acceptPhoneButton);
+        // Второй шаг регистрации. Паспортные данные клиента;
         waitPassportPageHeading(driver);
+        inputClientPassportData();
+        clickButton(driver, proceedButton);
+        // Третий шаг регистрации. Адрес клиента и доп.контакты;
+        waitPassportPageHeading(driver);
+
     }
 
 /*    @AfterMethod

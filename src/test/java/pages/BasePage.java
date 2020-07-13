@@ -6,6 +6,7 @@ import io.qameta.allure.Step;
 import org.openqa.selenium.*;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
+import org.openqa.selenium.support.FindBy;
 import org.testng.ITestResult;
 
 import java.util.concurrent.TimeUnit;
@@ -23,6 +24,9 @@ public class BasePage {
         return tDriver.get();
     }
 
+    @FindBy(xpath = "//div[2]/div/button")
+    public static WebElement proceedButton;
+
     @Step("Создание веб драйвера с заданными параметрами")
     public WebDriver initializeDriver() {
         WebDriverManager.getInstance(CHROME).config().setChromeDriverVersion("83");
@@ -34,6 +38,11 @@ public class BasePage {
         driver.manage().window().maximize();
         tDriver.set(driver);
         return getDriver();
+    }
+
+    @Step("Ввод данных")
+    public static void enterData(WebElement element, String data) {
+        element.sendKeys(data);
     }
 
     @Step("Нажатие кнопки, JS")

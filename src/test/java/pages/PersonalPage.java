@@ -11,6 +11,7 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 import java.time.Duration;
 
 import static helpers.TestData.*;
+import static pages.BasePage.enterData;
 
 public class PersonalPage {
 
@@ -48,17 +49,11 @@ public class PersonalPage {
     @FindBy(tagName = "h1")
     public static WebElement loanApplication;
 
-    @FindBy(xpath = "//div[2]/div/button")
-    public static WebElement proceed;
-
     @FindBy(xpath = "//div[2]/div/div/h1")
     public static WebElement phoneVerification;
 
     @FindBy(xpath = "//form/div[3]/div/button")
     public static WebElement acceptPhoneButton;
-
-    @FindBy(xpath = "//div/h1[2]")
-    public static WebElement passportHeadingText;
 
     @Step("Шаг открытия страницы авторизации")
     public static void openMainPage(WebDriver driver) {
@@ -71,20 +66,18 @@ public class PersonalPage {
         wait.until(ExpectedConditions.textToBePresentInElement(loanApplication, loanApplicationText));
     }
 
-    @Step("Ввод данных")
-    public static void enterData(WebElement element, String data) {
-        element.sendKeys(data);
+    @Step("Ввод основных данных клиент")
+    public static void inputClientData() {
+        enterData(lastName, lastNameData);
+        enterData(firstName, firstNameData);
+        enterData(middleName, middleNameData);
+        enterData(phone, phoneData);
+        enterData(email, emailData);
     }
 
     @Step("Ожидание текста подтверждения номера")
     public static void waitPhoneVerification(WebDriver driver) {
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
         wait.until(ExpectedConditions.textToBePresentInElement(phoneVerification, PhoneVerificationText));
-    }
-
-    @Step("Ожидание заголовка страницы паспортных данных")
-    public static void waitPassportPageHeading(WebDriver driver) {
-        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
-        wait.until(ExpectedConditions.textToBePresentInElement(passportHeadingText, PassportPageHeadingText));
     }
 }
