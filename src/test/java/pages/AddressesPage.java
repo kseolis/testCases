@@ -11,7 +11,7 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 import java.time.Duration;
 
 import static helpers.TestData.*;
-import static pages.BasePage.enterData;
+import static pages.BasePage.inputData;
 
 public class AddressesPage {
     public WebDriver driver;
@@ -27,7 +27,7 @@ public class AddressesPage {
     @FindBy(id = "equalAddresses")
     public static WebElement equalAddresses;
 
-    @FindBy(xpath = "//form/h1[1]")
+    @FindBy(xpath = "//form/h1[2]")
     public static WebElement addressesHeadingText;
 
     @FindBy(id = "phones[0].number")
@@ -36,16 +36,18 @@ public class AddressesPage {
     @FindBy(id = "phones[0].ownerName")
     public static WebElement ownerName;
 
+    @Step("Заполнение адреса и доп.контактов")
+    public static void inputAddressesAndAdditionalContact() {
+        inputData(registeredAddress, registeredAddressData);
+        inputData(additionalPhone, passportDateData);
+        inputData(ownerName, birthdayData);
+    }
+
     @Step("Ожидание заголовка страницы адреса")
     public static void waitAddressPageHeading(WebDriver driver) {
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
-        wait.until(ExpectedConditions.textToBePresentInElement(addressesHeadingText, AddressesPageHeadingText));
-    }
-
-    @Step("Заполнение адреса и доп.контактов")
-    public static void inputAddressesAndAdditionalContact() {
-        enterData(registeredAddress, registeredAddressData);
-        enterData(additionalPhone, passportDateData);
-        enterData(ownerName, birthdayData);
+        wait.
+        until(ExpectedConditions.
+        textToBePresentInElement(addressesHeadingText, addressesPageHeadingText));
     }
 }

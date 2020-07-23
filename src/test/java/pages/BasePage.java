@@ -36,12 +36,14 @@ public class BasePage {
     }
 
     @Step("Ввод данных")
-    public static void enterData(WebElement element, String data) {
+    public static void inputData(WebElement element, String data) {
         element.sendKeys(data);
     }
 
-    public static void enterIntData(WebElement element, int data) {
-        element.sendKeys();
+    @Step("Ввод паспортных данных клиента")
+    public static void typeIntoMaskedInput(WebDriver driver, String field, String data) {
+        driver.findElement(By.xpath("//input[contains(@id,'"+field.trim()
+                +"')]")).sendKeys(data);
     }
 
     @Step("Нажатие кнопки, JS")

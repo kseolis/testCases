@@ -1,13 +1,14 @@
 import org.openqa.selenium.WebDriver;
+import org.testng.ITestResult;
+import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 import pages.BasePage;
 import pages.PersonalPage;
 
-import static helpers.TestData.*;
-import static pages.AddressesPage.*;
+import static helpers.TestData.acceptPhoneData;
 import static pages.BasePage.*;
-import static pages.PassportPage.*;
+import static pages.PassportPage.inputClientPassportData;
 import static pages.PersonalPage.*;
 
 public class doublePagesTest {
@@ -32,22 +33,25 @@ public class doublePagesTest {
         clickButton(driver, proceedButtonPersonalPage);
         // Подтверждение номера телефона;
         waitPhoneVerification(driver);
-        enterData(code, acceptPhoneData);
+        inputData(code, acceptPhoneData);
         clickButton(driver, acceptPhoneButton);
         // Второй шаг регистрации. Паспортные данные клиента;
         waitPassportPageHeading(driver);
-        inputClientPassportData();
+        inputClientPassportData(driver);
+
+
+/*        waitProceedButtonPassportPage(driver);
         clickButton(driver, proceedButtonPassportPage);
         // Третий шаг регистрации. Адрес клиента и доп.контакты;
         waitAddressPageHeading(driver);
-        inputAddressesAndAdditionalContact();
+        inputAddressesAndAdditionalContact();*/
     }
 
-/*    @AfterMethod
+    @AfterMethod
     public void tearDown(ITestResult result) {
         makeScreenOnTestFail(result);
         if (driver != null) {
             driver.quit();
         }
-    }*/
+    }
 }

@@ -11,7 +11,7 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 import java.time.Duration;
 
 import static helpers.TestData.*;
-import static pages.BasePage.enterData;
+import static pages.BasePage.inputData;
 
 public class PersonalPage {
 
@@ -74,22 +74,22 @@ public class PersonalPage {
 
     @Step("Ввод основных данных клиент")
     public static void inputClientData() {
-        enterData(lastName, lastNameData);
-        enterData(firstName, firstNameData);
-        enterData(middleName, middleNameData);
-        enterData(phone, phoneData);
-        enterData(email, emailData);
+        inputData(lastName, lastNameData);
+        inputData(firstName, firstNameData);
+        inputData(middleName, middleNameData);
+        inputData(phone, phoneData);
+        inputData(email, emailData);
     }
 
     @Step("Ожидание текста подтверждения номера")
     public static void waitPhoneVerification(WebDriver driver) {
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
-        wait.until(ExpectedConditions.textToBePresentInElement(phoneVerification, PhoneVerificationText));
+        wait.until(ExpectedConditions.textToBePresentInElement(phoneVerification, phoneVerificationText));
     }
 
     @Step("Ожидание заголовка страницы паспортных данных")
     public static void waitPassportPageHeading(WebDriver driver) {
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
-        wait.until(ExpectedConditions.textToBePresentInElement(passportHeadingText, PassportPageHeadingText));
+        wait.until(ExpectedConditions.textToBePresentInElement(passportHeadingText, passportPageHeadingText));
     }
 }
