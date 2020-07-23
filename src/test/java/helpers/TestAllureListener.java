@@ -3,7 +3,7 @@ package helpers;
 import org.testng.ITestContext;
 import org.testng.ITestListener;
 import org.testng.ITestResult;
-import pages.BasePage;
+import pages.client.BasePage;
 
 public class TestAllureListener implements ITestListener {
 

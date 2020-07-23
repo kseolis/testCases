@@ -3,13 +3,13 @@ import org.testng.ITestResult;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
-import pages.BasePage;
-import pages.PageLogin;
+import pages.client.BasePage;
+import pages.client.PageLogin;
 
 import static helpers.TestData.*;
-import static pages.BasePage.clickButton;
-import static pages.BasePage.makeScreenOnTestFail;
-import static pages.PageLogin.*;
+import static pages.client.BasePage.clickButton;
+import static pages.client.BasePage.makeScreenOnTestFail;
+import static pages.client.PageLogin.*;
 
 public class FirstTest {
 

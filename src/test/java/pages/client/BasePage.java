@@ -1,4 +1,4 @@
-package pages;
+package pages.client;
 
 import io.github.bonigarcia.wdm.WebDriverManager;
 import io.qameta.allure.Attachment;

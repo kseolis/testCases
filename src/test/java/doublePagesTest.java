@@ -3,13 +3,16 @@ import org.testng.ITestResult;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
-import pages.BasePage;
-import pages.PersonalPage;
+import pages.admin.AdminAuthorisationPage;
+import pages.client.BasePage;
+import pages.client.PassportPage;
+import pages.client.PersonalPage;
 
 import static helpers.TestData.acceptPhoneData;
-import static pages.BasePage.*;
-import static pages.PassportPage.inputClientPassportData;
-import static pages.PersonalPage.*;
+import static pages.admin.AdminAuthorisationPage.*;
+import static pages.client.BasePage.*;
+import static pages.client.PassportPage.inputClientPassportData;
+import static pages.client.PersonalPage.*;
 
 public class doublePagesTest {
     public WebDriver driver;
@@ -19,7 +22,8 @@ public class doublePagesTest {
     private void setupClass() {
         basePage = new BasePage();
         driver = basePage.initializeDriver();
-        PersonalPage page = new PersonalPage(driver);
+        PersonalPage personalPage = new PersonalPage(driver);
+        PassportPage passportPage = new PassportPage(driver);
     }
 
     @Test(description = "Тест СНИЛС идентификации", priority = 1)
@@ -39,6 +43,17 @@ public class doublePagesTest {
         waitPassportPageHeading(driver);
         inputClientPassportData(driver);
 
+        // Открытие второго браузера, на стороне админа;
+        WebDriver tempDriver = basePage.initializeDriver();
+        AdminAuthorisationPage login = new AdminAuthorisationPage(tempDriver);
+        openAdminPage(tempDriver);
+        inputAuthorisationData();
+        clickButton(tempDriver, loginButton);
+        waitAdminHomePage(tempDriver);
+        clickButton(tempDriver, clientsLink);
+        clickButton(tempDriver, clientsPage);
+        waitAdminClientsPage(tempDriver);
+        tempDriver.close();
 
 /*        waitProceedButtonPassportPage(driver);
         clickButton(driver, proceedButtonPassportPage);

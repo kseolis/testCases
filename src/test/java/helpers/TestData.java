@@ -14,16 +14,17 @@ public class TestData {
 
     // Robo-data
     public static final String roboUrl = "http://127.0.0.1";
+    public static final String roboUrlAdmin = "http://127.0.0.1/employee/login";
     public static final String loanApplicationText = "Заявка на займ";
     public static final String phoneVerificationText = "Подтверждение номера телефона";
     public static final String passportPageHeadingText = "Паспортные данные";
     public static final String addressesPageHeadingText = "Дополнительные контакты";
 
-
-    public static final String lastNameData = "Иванов";
-    public static final String firstNameData = "Иван";
-    public static final String middleNameData = "Иванович";
-    public static final String emailData = random + "glad" + random + "@mail.ru";
+    //client
+    public static final String lastNameData = "Макаров";
+    public static final String firstNameData = "Белан";
+    public static final String middleNameData = "Семёнович";
+    public static final String emailData = random + "cheat" + random + "@mail.ru";
     public static final String phoneData = "79235500" + random;
 
     public static final String acceptPhoneData = "123456";
@@ -38,5 +39,9 @@ public class TestData {
     public static final String registeredAddressData = "г Кемерово, ул Терешковой, д 25, кв 24";
     public static final String ownerName = "Виталий Витальевич";
 
-
+    // admin
+    public static final String adminLoginData = "admin";
+    public static final String adminPassData = "admin1";
+    public static final String textToAdminTitle = "Общая информация";
+    public static final String textToAdminTitleClients = "Список клиентов";
 }

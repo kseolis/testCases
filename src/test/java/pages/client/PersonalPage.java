@@ -1,4 +1,4 @@
-package pages;
+package pages.client;
 
 import io.qameta.allure.Step;
 import org.openqa.selenium.WebDriver;
@@ -11,7 +11,7 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 import java.time.Duration;
 
 import static helpers.TestData.*;
-import static pages.BasePage.inputData;
+import static pages.client.BasePage.inputData;
 
 public class PersonalPage {
 
