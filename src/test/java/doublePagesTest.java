@@ -4,12 +4,17 @@ import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 import pages.admin.AdminAuthorisationPage;
+import pages.admin.AdminClientPage;
+import pages.admin.AdminMainPage;
 import pages.client.BasePage;
 import pages.client.PassportPage;
 import pages.client.PersonalPage;
 
 import static helpers.TestData.acceptPhoneData;
 import static pages.admin.AdminAuthorisationPage.*;
+import static pages.admin.AdminClientPage.*;
+import static pages.admin.AdminMainPage.clientsLink;
+import static pages.admin.AdminMainPage.clientsPage;
 import static pages.client.BasePage.*;
 import static pages.client.PassportPage.inputClientPassportData;
 import static pages.client.PersonalPage.*;
@@ -46,13 +51,18 @@ public class doublePagesTest {
         // Открытие второго браузера, на стороне админа;
         WebDriver tempDriver = basePage.initializeDriver();
         AdminAuthorisationPage login = new AdminAuthorisationPage(tempDriver);
+        AdminMainPage mainPage = new AdminMainPage(tempDriver);
+        AdminClientPage clientPage = new AdminClientPage(tempDriver);
+
         openAdminPage(tempDriver);
         inputAuthorisationData();
         clickButton(tempDriver, loginButton);
         waitAdminHomePage(tempDriver);
+
         clickButton(tempDriver, clientsLink);
         clickButton(tempDriver, clientsPage);
         waitAdminClientsPage(tempDriver);
+        assertSeeClient();
         tempDriver.close();
 
 /*        waitProceedButtonPassportPage(driver);

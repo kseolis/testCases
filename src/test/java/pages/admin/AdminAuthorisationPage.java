@@ -33,18 +33,12 @@ public class AdminAuthorisationPage {
     @FindBy(css = "button.btn-block")
     public static WebElement loginButton;
 
-    @FindBy(linkText = "Клиенты")
-    public static WebElement clientsLink;
-
-    @FindBy(xpath = "(//a[@href='http://127.0.0.1/employee/client'])[2]")
-    public static WebElement clientsPage;
-
     @Step("Шаг открытия страницы авторизации")
     public static void openAdminPage(WebDriver tempDriver) {
         tempDriver.get(roboUrlAdmin);
     }
 
-    @Step("Ввод паспортных данных клиента")
+    @Step("Ввод данных админа")
     public static void inputAuthorisationData() {
         inputData(adminLogin, adminLoginData);
         inputData(adminPassword, adminPassData);
@@ -54,11 +48,5 @@ public class AdminAuthorisationPage {
     public static void waitAdminHomePage(WebDriver tempDriver) {
         WebDriverWait wait = new WebDriverWait(tempDriver, Duration.ofSeconds(10));
         wait.until(ExpectedConditions.textToBePresentInElement(adminTitle, textToAdminTitle));
-    }
-
-    @Step("Ожидание страницы клиентов")
-    public static void waitAdminClientsPage(WebDriver tempDriver) {
-        WebDriverWait wait = new WebDriverWait(tempDriver, Duration.ofSeconds(10));
-        wait.until(ExpectedConditions.textToBePresentInElement(adminTitle, textToAdminTitleClients));
     }
 }
