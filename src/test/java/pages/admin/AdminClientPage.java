@@ -11,8 +11,7 @@ import org.testng.Assert;
 
 import java.time.Duration;
 
-import static helpers.TestData.phoneData;
-import static helpers.TestData.textToAdminTitleClients;
+import static helpers.TestData.*;
 
 public class AdminClientPage {
     public WebDriver driver;
@@ -25,8 +24,17 @@ public class AdminClientPage {
     @FindBy(css = "h1")
     public static WebElement adminTitle;
 
-    @FindBy(xpath = "//tbody/tr[1]/td[3]")
-    public static WebElement clientPhone;
+    @FindBy(xpath = "//tbody/tr[1]/td/a")
+    public static WebElement clientName;
+
+    @FindBy(id = "client-list-filters-base-search")
+    public static WebElement searchField;
+
+    @FindBy(css = "#client-list-filters-base-search-type")
+    public static WebElement searchFieldType;
+
+    @FindBy(xpath = "//option[@value='phone']")
+    public static WebElement phoneOption;
 
     @Step("Ожидание страницы клиентов")
     public static void waitAdminClientsPage(WebDriver tempDriver) {
@@ -35,9 +43,9 @@ public class AdminClientPage {
     }
 
     @Step("Подтверждение записи клиента в админке.")
-    public static void assertSeeClient() {
-        System.out.println(phoneData);
-        System.out.println(clientPhone.getText());
-        Assert.assertEquals(phoneData, clientPhone.getText());
+    public static void assertSeeClient(WebDriver tempDriver) {
+        WebDriverWait wait = new WebDriverWait(tempDriver, Duration.ofSeconds(10));
+        wait.until(ExpectedConditions.textToBePresentInElement(clientName, fullName));
+        Assert.assertEquals(clientName.getText(), fullName);
     }
 }

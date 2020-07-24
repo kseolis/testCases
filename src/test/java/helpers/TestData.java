@@ -1,5 +1,7 @@
 package helpers;
 
+import java.util.Random;
+
 public class TestData {
     private static final int random = (int) (Math.random() * 10000);
 
@@ -21,9 +23,10 @@ public class TestData {
     public static final String addressesPageHeadingText = "Дополнительные контакты";
 
     //client
-    public static final String lastNameData = "Макаров";
-    public static final String firstNameData = "Белан";
-    public static final String middleNameData = "Семёнович";
+    public static final String lastNameData =  randomStr();
+    public static final String firstNameData =  randomStr();
+    public static final String middleNameData =  randomStr();
+    public static final String fullName = lastNameData + " " + firstNameData + " " + middleNameData;
     public static final String emailData = random + "cheat" + random + "@mail.ru";
     public static final String phoneData = "79235500" + random;
 
@@ -44,4 +47,15 @@ public class TestData {
     public static final String adminPassData = "admin1";
     public static final String textToAdminTitle = "Общая информация";
     public static final String textToAdminTitleClients = "Список клиентов";
+
+    private static String randomStr() {
+        char[] chars = "абвгдеёжзийклмнопрстуфхцчшщьыъэюя".toCharArray();
+        StringBuilder sb = new StringBuilder(20);
+        Random random = new Random();
+        for (int i = 0; i < 8; i++) {
+            char c = chars[random.nextInt(chars.length)];
+            sb.append(c);
+        }
+        return sb.toString();
+    }
 }

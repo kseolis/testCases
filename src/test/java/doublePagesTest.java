@@ -10,13 +10,13 @@ import pages.client.BasePage;
 import pages.client.PassportPage;
 import pages.client.PersonalPage;
 
-import static helpers.TestData.acceptPhoneData;
+import static helpers.TestData.*;
 import static pages.admin.AdminAuthorisationPage.*;
 import static pages.admin.AdminClientPage.*;
 import static pages.admin.AdminMainPage.clientsLink;
 import static pages.admin.AdminMainPage.clientsPage;
 import static pages.client.BasePage.*;
-import static pages.client.PassportPage.inputClientPassportData;
+import static pages.client.PassportPage.*;
 import static pages.client.PersonalPage.*;
 
 public class doublePagesTest {
@@ -32,7 +32,7 @@ public class doublePagesTest {
     }
 
     @Test(description = "Тест СНИЛС идентификации", priority = 1)
-    public void testSnils() {
+    public void testSnils() throws InterruptedException {
         // Первый шаг регистрации. Данные клиента(ФИО, email, телефон);
         openMainPage(driver);
         clickButton(driver, getLoan);
@@ -62,7 +62,7 @@ public class doublePagesTest {
         clickButton(tempDriver, clientsLink);
         clickButton(tempDriver, clientsPage);
         waitAdminClientsPage(tempDriver);
-        assertSeeClient();
+        assertSeeClient(tempDriver);
         tempDriver.close();
 
 /*        waitProceedButtonPassportPage(driver);
