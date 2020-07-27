@@ -45,7 +45,7 @@ public class PassportPage {
     @FindBy(id = "birthplace")
     public static WebElement birthplace;
 
-    @FindBy(xpath = "//button[@color='yellow']")
+    @FindBy(xpath = "//*[contains(text(),'ПРОДОЛЖИТЬ')]")
     public static WebElement proceedButtonPassportPage;
 
     @Step("Ввод паспортных данных клиента")

@@ -47,6 +47,7 @@ public class TestData {
     public static final String adminPassData = "admin1";
     public static final String textToAdminTitle = "Общая информация";
     public static final String textToAdminTitleClients = "Список клиентов";
+    public static final String textForTable = "Показано от 1 до 1 из 1 записей";
 
     private static String randomStr() {
         char[] chars = "абвгдеёжзийклмнопрстуфхцчшщьыъэюя".toCharArray();

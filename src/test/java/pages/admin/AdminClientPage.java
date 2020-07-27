@@ -24,8 +24,8 @@ public class AdminClientPage {
     @FindBy(css = "h1")
     public static WebElement adminTitle;
 
-    @FindBy(xpath = "//tbody/tr[1]/td/a")
-    public static WebElement clientName;
+    @FindBy(xpath = "//table[@id='client-list-table']/tbody/tr/td[2]/a")
+    public static WebElement item;
 
     @FindBy(id = "client-list-filters-base-search")
     public static WebElement searchField;
@@ -45,7 +45,7 @@ public class AdminClientPage {
     @Step("Подтверждение записи клиента в админке.")
     public static void assertSeeClient(WebDriver tempDriver) {
         WebDriverWait wait = new WebDriverWait(tempDriver, Duration.ofSeconds(10));
-        wait.until(ExpectedConditions.textToBePresentInElement(clientName, fullName));
-        Assert.assertEquals(clientName.getText(), fullName);
+        wait.until(ExpectedConditions.elementToBeClickable(item));
+        Assert.assertEquals(item.getAttribute("innerHTML"), fullName);
     }
 }
