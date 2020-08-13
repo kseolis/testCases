@@ -46,8 +46,6 @@ public class AddressesPage {
     @Step("Ожидание заголовка страницы адреса")
     public static void waitAddressPageHeading(WebDriver driver) {
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
-        wait.
-        until(ExpectedConditions.
-        textToBePresentInElement(addressesHeadingText, addressesPageHeadingText));
+        wait.until(ExpectedConditions.textToBePresentInElement(addressesHeadingText, addressesPageHeadingText));
     }
 }

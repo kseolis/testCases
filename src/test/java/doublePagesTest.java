@@ -4,7 +4,7 @@ import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 import pages.admin.AdminAuthorisationPage;
-import pages.admin.AdminClientPage;
+import pages.admin.AdminClientsPage;
 import pages.admin.AdminMainPage;
 import pages.client.AddressesPage;
 import pages.client.BasePage;
@@ -13,7 +13,7 @@ import pages.client.PersonalPage;
 
 import static helpers.TestData.*;
 import static pages.admin.AdminAuthorisationPage.*;
-import static pages.admin.AdminClientPage.*;
+import static pages.admin.AdminClientsPage.*;
 import static pages.admin.AdminMainPage.*;
 import static pages.client.AddressesPage.*;
 import static pages.client.BasePage.*;
@@ -62,7 +62,7 @@ public class doublePagesTest {
         WebDriver tempDriver = basePage.initializeDriver();
         AdminAuthorisationPage login = new AdminAuthorisationPage(tempDriver);
         AdminMainPage mainPage = new AdminMainPage(tempDriver);
-        AdminClientPage clientPage = new AdminClientPage(tempDriver);
+        AdminClientsPage clientPage = new AdminClientsPage(tempDriver);
 
         openAdminPage(tempDriver);
         inputAuthorisationData();

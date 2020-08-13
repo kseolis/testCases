@@ -13,10 +13,10 @@ import java.time.Duration;
 
 import static helpers.TestData.*;
 
-public class AdminClientPage {
+public class AdminClientsPage {
     public WebDriver driver;
 
-    public AdminClientPage(WebDriver driver) {
+    public AdminClientsPage(WebDriver driver) {
         this.driver = driver;
         PageFactory.initElements(driver, this);
     }
